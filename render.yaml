@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: logistika-ym-bot
+    runtime: python
+    region: frankfurt
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: PRIVATE_GROUP_ID
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: SOURCE_GROUPS
+        sync: false
+      - key: SESSION_STRING
+        sync: false
+      - key: PAYMENT_CARD
+        sync: false
+      - key: PAYMENT_CARD_HOLDER
+        sync: false
+      - key: PRICE_WEEK
+        value: "25000"
+      - key: PRICE_MONTH
+        value: "80000"
+      - key: REFERRAL_BONUS
+        value: "5000"

@@ -1,0 +1,33 @@
+# Muhit o'zgaruvchilari (maxfiy kalitlar)
+.env
+*.env.local
+
+# Python kesh fayllari
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Telethon va WhatsApp sessiyalari (xavfsizlik uchun)
+*.session
+*.session-journal
+whatsapp_chrome_profile/
+
+# Katta log fayllari
+*.log
+bot.log
+bot_runtime.log
+whatsapp_*.log
+whatsapp_qr.png
+wa_debug.png
+
+# Ma'lumotlar bazasi (Renderda server ichida qayta yaratiladi yoki PostgreSQL ishlatiladi)
+*.db
+*.sqlite
+*.sqlite3
+
+# Foydalanuvchi sinov skriptlari va vaqtinchalik hisobotlar
+classified_results.json
+candidates_to_scan.json
+session_string.txt
