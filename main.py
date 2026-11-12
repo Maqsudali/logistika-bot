@@ -91,22 +91,21 @@ async def main():
 
         # Render.com yoki boshqa bulut platformalari uchun Health Check veb-serveri
         web_runner = None
-        if os.getenv("PORT"):
-            try:
-                async def handle_ping(request):
-                    return web.Response(text="OK - Logistika Bot is running", status=200)
+        try:
+            async def handle_ping(request):
+                return web.Response(text="OK - Logistika Bot is running", status=200)
 
-                app = web.Application()
-                app.router.add_get("/", handle_ping)
-                app.router.add_get("/health", handle_ping)
-                web_runner = web.AppRunner(app)
-                await web_runner.setup()
-                port = int(os.getenv("PORT", "10000"))
-                site = web.TCPSite(web_runner, "0.0.0.0", port)
-                await site.start()
-                logger.info(f"Health-check veb-serveri {port}-portda ishga tushirildi (Render.com uchun).")
-            except Exception as e:
-                logger.warning(f"Veb-serverni ishga tushirishda xatolik: {e}")
+            app = web.Application()
+            app.router.add_get("/", handle_ping)
+            app.router.add_get("/health", handle_ping)
+            web_runner = web.AppRunner(app)
+            await web_runner.setup()
+            port = int(os.getenv("PORT", "10000"))
+            site = web.TCPSite(web_runner, "0.0.0.0", port)
+            await site.start()
+            logger.info(f"Health-check veb-serveri {port}-portda ishga tushirildi (Render.com va UptimeRobot uchun).")
+        except Exception as e:
+            logger.warning(f"Veb-serverni ishga tushirishda xatolik: {e}")
 
         # Aiogram bot cheksiz polling sikli
         while True:
